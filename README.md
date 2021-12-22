@@ -1,6 +1,9 @@
 # image_storing_pract
 
-image_storing_pract  
+image storing to sqflite practice.  
+Pick an image from phone gellary or camera and store it to sqflite database   
+as a 64 bit string encoded and decoded.
+
 store image with image picker and storing the 64 bit image code to the sqflite local database.
 
 ## Getting Started
