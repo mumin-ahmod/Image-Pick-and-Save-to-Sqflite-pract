@@ -39,7 +39,7 @@ class _ImagePickerPageState extends State<ImagePickerPage> {
 
 
   Future<String> pickImage() async {
-    var image = await ImagePicker().pickImage(source: ImageSource.gallery);
+    var image = await ImagePicker().pickImage(source: ImageSource.gallery, imageQuality: 45);
 
     var imageBytes = await image!.readAsBytes();
 
@@ -65,7 +65,7 @@ class _ImagePickerPageState extends State<ImagePickerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Image Pick"),
+        title: const Text("Image Pick"),
       ),
 
       body: Center(
@@ -74,13 +74,13 @@ class _ImagePickerPageState extends State<ImagePickerPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
 
-            Text("INPUT IMAGE"),
+            const Text("INPUT IMAGE"),
 
             ElevatedButton(onPressed: () async{
              byte64String = await pickImage();
 
              print("BYTE 64 STRING: $byte64String");
-            }, child: Text("Pick Image")),
+            }, child: const Text("Pick Image")),
 
             const SizedBox(height: 30,),
 
