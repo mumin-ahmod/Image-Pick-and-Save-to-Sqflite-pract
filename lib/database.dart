@@ -5,7 +5,7 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart' as path;
 
 class DatabaseHelper {
-  static const tableName = "profiletable";
+  static const profileTable = "profiletable";
   static const dbVersion = 1;
 
   static const idColumn = "id";
@@ -14,7 +14,7 @@ class DatabaseHelper {
 
   static Future _onCreate(Database db, int version) {
     return db.execute("""
-    CREATE TABLE $tableName(
+    CREATE TABLE $profileTable(
     $idColumn INTEGER PRIMARY KEY AUTOINCREMENT,
     $nameColumn TEXT,
     $image64bitColumn TEXT
@@ -35,13 +35,13 @@ class DatabaseHelper {
   static Future insertProfile(Map<String, dynamic> row) async {
     final db = await DatabaseHelper.open();
     print("ROW INSERTED");
-    return await db.insert(tableName, row);
+    return await db.insert(profileTable, row);
   }
 
   static getAllProfile() async {
     final db = await DatabaseHelper.open();
 
-    List<Map<String, dynamic>> mapList = await db.query(tableName);
+    List<Map<String, dynamic>> mapList = await db.query(profileTable);
 
     return List.generate(
         mapList.length, (index) => ProfileModel.fromMap(mapList[index]));
