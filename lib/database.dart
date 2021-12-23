@@ -8,14 +8,14 @@ class DatabaseHelper {
   static const profileTable = "profiletable";
   static const dbVersion = 1;
 
-  static const idColumn = "id";
+  static const idProfileColumn = "id";
   static const nameColumn = "name";
   static const image64bitColumn = "image64bit";
 
   static Future _onCreate(Database db, int version) {
     return db.execute("""
     CREATE TABLE $profileTable(
-    $idColumn INTEGER PRIMARY KEY AUTOINCREMENT,
+    $idProfileColumn INTEGER PRIMARY KEY AUTOINCREMENT,
     $nameColumn TEXT,
     $image64bitColumn TEXT
     
